@@ -1,7 +1,12 @@
-import Hero from "@/components/Hero";
-import SearchForm from "@/components/SearchForm";
+import Hero from '@/components/Hero';
+import SearchForm from '@/components/SearchForm';
 
-const HomePage = () => {
+const HomePage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ query?: string }>;
+}) => {
+  const query = (await searchParams).query;
   return (
     <section>
       <Hero
@@ -9,7 +14,7 @@ const HomePage = () => {
         title="pitch your startup, connect with entrepreneurs"
         text="Submit ideas, Vote on pitches, and Get Noticed in Virtual Competitions"
       >
-        <SearchForm />
+        <SearchForm query={query} />
       </Hero>
     </section>
   );
